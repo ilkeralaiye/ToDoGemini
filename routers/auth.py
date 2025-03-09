@@ -3,10 +3,10 @@ from jose.constants import ALGORITHMS
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from starlette import status
-from database import SessionLocal
+from ..database import SessionLocal
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from typing import Annotated
-from models import User
+from ..models import User
 from passlib.context import CryptContext
 from jose import jwt, JWTError
 from datetime import timedelta, datetime, timezone
@@ -14,7 +14,7 @@ from fastapi.templating import Jinja2Templates
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
 
 bcryptContext = CryptContext(schemes=["bcrypt"], deprecated="auto")
 SECRET_KEY = "acoztm3revp1vfj7ld5sz2ndg5xp79r9fnr2p4hx2dy63h6a8efhj6rm54u8evh8"
